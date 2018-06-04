@@ -46,3 +46,9 @@ body h2~h2{
 h2~h2 + p{
 	margin-top:-17px;
 }
+
+#hobby-btn{
+	position: absolute;
+	left:35%;
+	top:20%;
+}
