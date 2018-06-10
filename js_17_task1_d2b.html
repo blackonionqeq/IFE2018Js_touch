@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+<input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果:</p></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+<input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果:</p>
+    <script>
+        var quo = 0,
+    rmd = 0,
+    str = "",
+    va,va2;
+var btn = document.getElementById("trans-btn");
+btn.addEventListener('click',cl);
+btn.addEventListener('click',de2Bi);
+var pt = document.getElementById("test");
+var ptext = document.getElementById("result");
+function cl(){
+    ptext.innerHTML="运算结果:";
+    str="";
+}
+
+function judge(value){
+    if(value %1 != 0){
+        ptext.innerHTML+="请输入整数";
+        return 0;
+    }
+    else if(value<0){
+        ptext.innerHTML+="请输入非负整数";
+        return 0;
+    }
+    else if(value>0){
+        return 1;
+    }
+    else {
+        ptext.innerHTML+="请输入整数";
+        return 0;
+    }
+}
+
+
+function de2Bi(){
+    va = document.getElementById("dec-number").value;
+    va2 = document.getElementById("bin-bit").value;
+    if(!judge(va)) return;
+    else if(!judge(va2)) return;
+    rmd = va%2;
+    quo = Math.floor(va/2);
+    str+=rmd;
+    while(quo>1){
+        rmd=quo%2;
+        str+=rmd;
+        quo=Math.floor(quo/2);
+    }
+    if(quo == 1) str+=quo;
+    str=str.split('').reverse();
+    //str=str.split('').reverse().join('');
+    if(str.length>va2){
+        console.log("转化后二进制位数输入错误啦");
+    }
+    else{
+        while(str.length<va2){
+            str.unshift(0);
+        }
+    }
+    str=str.join('');
+    ptext.innerHTML+=str;
+}
+    </script>
+</body>
+</html>

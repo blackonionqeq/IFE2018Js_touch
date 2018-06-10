@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <table id="test"></table>
+        <script>
+            var table = document.getElementById("test");
+table.border = 20;
+table.width = "100%";
+
+var tbody = document.createElement("tbody");
+table.appendChild(tbody);
+
+var i,j,rs;
+for(i=0;i<9;i++){
+    tbody.insertRow(i);
+    for(j=0;j<9;j++){
+        rs=(i+1)*(j+1);
+        tbody.rows[i].insertCell(j);
+        tbody.rows[i].cells[j].appendChild(document.createTextNode(rs));
+    }
+}
+</script>
+</body>
+</html>
